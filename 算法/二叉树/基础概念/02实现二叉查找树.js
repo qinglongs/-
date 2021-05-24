@@ -55,6 +55,7 @@ class BST {
           // 当右节点为空时插入
           if (current === null) {
             parent.right = n;
+            break;
           }
         }
       }
@@ -67,5 +68,7 @@ const bst = new BST();
 bst.insert(10);
 bst.insert(11);
 bst.insert(9);
+bst.insert(8);
+bst.insert(12);
 
-console.log(JSON.stringify(bst));
+console.log(JSON.stringify(bst.root));
