@@ -8,6 +8,7 @@ const levelOrder = (root) => {
 
   while (queue.length) {
     const size = queue.length;
+    // 存储对应层级的节点
     const vec = [];
 
     for (let i = 0; i < size; i++) {
