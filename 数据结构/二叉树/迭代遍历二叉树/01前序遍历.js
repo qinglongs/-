@@ -18,7 +18,6 @@ const preOrder = (node) => {
       stack.push(node.left);
     }
   }
-
   return result;
 };
 
@@ -27,6 +26,7 @@ const node = {
   data: 10,
   left: {
     data: 9,
+
     left: { data: 7, left: null, right: null },
     right: { data: 8, left: null, right: null },
   },
