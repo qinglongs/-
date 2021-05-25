@@ -1,25 +1,28 @@
-// 前序遍历 中左右
-const preOrder = (node) => {
-  // 用栈来存储
+// 左右中
+const postorder = (node) => {
   const stack = [];
-  // 存储遍历好的数组
   const result = [];
-
-  if (!node) return;
 
   stack.push(node);
 
   while (stack.length) {
     const node = stack.pop();
 
-    if (node) {
-      result.push(node.data);
-      stack.push(node.right);
+    // 处理中节点
+    result.push(node.data);
+
+    // 处理左节点
+    if (node.left) {
       stack.push(node.left);
+    }
+
+    // 处理右节点
+    if (node.right) {
+      stack.push(node.right);
     }
   }
 
-  return result;
+  return result.reverse();
 };
 
 // 二叉树对象
@@ -37,4 +40,4 @@ const node = {
   },
 };
 
-console.log(preOrder(node));
+console.log(postorder(node));
