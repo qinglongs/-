@@ -3,21 +3,30 @@
 const levelOrder = (root) => {
   if (!root) return;
 
+  // 队列
   const queue = [root];
+
+  // 遍历结果
   const result = [];
 
   while (queue.length) {
     const size = queue.length;
+
     // 存储对应层级的节点
     const vec = [];
 
     for (let i = 0; i < size; i++) {
+      // 出队
       const node = queue.shift();
-      vec.push(node.data);
+      // 加入层级节点数组
+      vec.push(node.value);
+      // 左节点加入队列
       if (node.left) queue.push(node.left);
+      // 右节点加入队列
       if (node.right) queue.push(node.right);
     }
 
+    // 遍历结果加入到结果数组
     result.push(vec);
   }
 
