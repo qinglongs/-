@@ -12,19 +12,25 @@ const levelOrder = (root) => {
   while (queue.length) {
     const size = queue.length;
 
+    // 存储对应层级的节点
+    const temp = [];
+
     for (let i = 0; i < size; i++) {
       // 出队
       const node = queue.shift();
-
-      node.next = queue[queue.length - 1] || null;
+      // 加入层级节点数组
+      temp.push(node.value);
       // 左节点加入队列
       if (node.left) queue.push(node.left);
       // 右节点加入队列
       if (node.right) queue.push(node.right);
     }
+
+    // 遍历结果加入到结果数组
+    result.push(temp);
   }
 
-  return node;
+  return result;
 };
 
 // 二叉树对象
@@ -42,4 +48,4 @@ const node = {
   },
 };
 
-console.log(JSON.stringify(levelOrder(node)));
+console.log(levelOrder(node));

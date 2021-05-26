@@ -4,15 +4,16 @@ const averageOfLevels = (root) => {
   const result = [];
 
   while (queue.length) {
-    const temp = [];
-
+    let temp = 0;
+    let num = 0;
     const size = queue.length;
 
     for (let i = 0; i < size; i++) {
       const node = queue.shift();
 
       // 处理中节点
-      temp.push(node.value);
+      temp += node.value;
+      num++;
 
       // 处理左节点
       if (node.left) queue.push(node.left);
@@ -21,7 +22,7 @@ const averageOfLevels = (root) => {
       if (node.right) queue.push(node.right);
     }
 
-    result.push(temp.reduce((x, y) => x + y) / temp.length);
+    result.push(temp / num);
   }
 
   return result;
